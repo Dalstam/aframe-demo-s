@@ -1,0 +1,38 @@
+﻿<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1">
+    <title>Examples • Walls</title>
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.2.2/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+            <script id="boxesTemplate" type="text/html">
+                <a-box color="${box1color}" position="-1 0 -5"></a-box>
+                <a-box color="${box2color}" position="0 1 -5"></a-box>
+                <a-box color="${box3color}" position="1 0 -5"></a-box>
+            </script>
+        </a-assets>
+
+        <a-entity template="src: #boxesTemplate"
+                  data-box1color="red" data-box2color="green" data-box3color="blue"></a-entity>
+    </a-scene>
+    <a-entity template="src: #boxesTemplate"
+              data-box1color="red" data-box2color="green" data-box3color="blue"></a-entity>
+    <a-entity template="src: #boxesTemplate"
+              data-box1color="red" data-box2color="green" data-box3color="blue"></a-entity>
+    <a-entity template="src: #boxesTemplate"
+              data-box1color="red" data-box2color="green" data-box3color="blue"></a-entity>
+    <a-entity template="src: #boxesTemplate"
+              data-box1color="red" data-box2color="green" data-box3color="blue"></a-entity>
+    <a-entity template="src: #boxesTemplate"
+              data-box1color="red" data-box2color="green" data-box3color="blue"></a-entity>
+    <a-entity template="src: #boxesTemplate"
+              data-box1color="red" data-box2color="green" data-box3color="blue"></a-entity>
+    </a-scene>
+</body>
+</html>

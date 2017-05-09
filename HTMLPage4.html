@@ -1,0 +1,23 @@
+﻿<html>
+<head>
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-box color="#6173F4" opacity="0.8" depth="2" position="1 3 -1"></a-box>
+        <a-sphere radius="2" position="1 1 5"></a-sphere>
+        <<a-entity bmfont-text="text: Hello World" width="48" position="180"></a-entity>
+        <a-dodecahedron color="red" radius="2" position="180"></a-dodecahedron>
+
+        <!--<a-sky src="texture/SKY.jpg"></a-sky>-->a-sky>
+    </a-scene>
+    <script>
+        var box = document.querySelector('a-box');
+        box.getAttribute('position');
+        box.addEventListener('click', function () {
+            box.setAttribute('color', 'red');
+        });
+    </script>
+</body>
+</html>

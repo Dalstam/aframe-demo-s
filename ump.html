@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="https://aframe.io/releases/0.5.0/aframe.js"></script>
+    <script src="js/animations.min.js"></script>
+    <script src="js/aframe-sun-sky.min.js"></script>
+      <script src="https://unpkg.com/aframe-curve-component/dist/aframe-curve-component.min.js"></script>
+
+  <script src="https://rawgit.com/protyze/aframe-alongpath-component/master/dist/aframe-alongpath-component.min.js"></script>
+    <script src="https://rawgit.com/chenzlabs/stats-in-vr/master/dist/aframe-stats-in-vr-component.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene stats-in-vr>
+      <a-assets>
+        <a-asset-item id="ball" src="models/baseball.dae"></a-asset-item>
+        <a-asset-item id="field" src="models/Softball+Field+Single.dae"></a-asset-item>
+        <a-asset-item id="player-obj" src="models/Textures/player.obj"></a-asset-item>
+        <a-asset-item id="player-mtl" src="models/Textures/player.mtl"></a-asset-item>
+
+     </a-assets>
+
+      <!-- <a-camera position="12.3 1.7 -13" rotation="0 -50 0"></a-camera> -->
+
+      <!-- <a-camera id="side" position="14 0 -11" rotation="0 45 0" active="false">
+        </a-camera>
+        <a-camera id="top" position="12 0 -13" rotation="-90 0  0" active="false">
+      </a-camera> -->
+
+      <a-sun-sky material="sunPosition: -0.2 0.5 -5"></a-sun-sky>
+      <!-- <a-entity light="type: directional; color: #EEE; intensity: 0.5; "  position="-0.2 0.5 -5"></a-entity> -->
+
+
+      <a-entity light="color:#BBB;type:ambient;target:#field"></a-entity>
+      <a-curve id="track1">
+        <!-- start pitch -->
+        <a-curve-point id="ballPosStart" position="21 1.8 -21"></a-curve-point>
+
+        <!-- <a-curve-point position="17 1.5 -17"></a-curve-point>
+        <a-curve-point position="14 1.5 -13"></a-curve-point> -->
+        <!-- bal door strikzone  -->
+        <a-curve-point id="ballPosZone" position="12.5 1.5 -12.5"></a-curve-point>
+        <!-- bal bij catcher -->
+        <a-curve-point id="ballPosEnd" position="11.9 1 -11.9"></a-curve-point>
+      </a-curve>
+      <a-draw-curve curveref="#track1"></a-draw-curve>
+
+
+      <a-collada-model id="field" src="#field" position="-29 0.5 29">
+        <a-camera id="ump" position="11.5 0.15 -11.7" rotation="0 -50 0" active="true" >
+        </a-camera>
+        <a-entity id="player" obj-model="obj: #player-obj; mtl: #player-mtl" position="12.3 0.6 -13.2" rotation="0 39 0">
+          <a-entity id="strikezone" position="0.132 0.9 0.619" rotation="0 6.245 0" geometry="primitive: box; width:0.25; height:0.8; depth:0.4;" material="opacity:0.2;color:blue;"></a-entity>
+        </a-entity>
+        <a-image src="models/catcher.png" position="12 1.1 -12" rotation="0 -45 0" scale="1 1 1"></a-image>
+        <a-collada-model id="ballR" src="#ball" rotation="90" scale="1 1 1"
+        alongpath="curve: #track1; delay:4000; dur:4000;">
+        <!-- animation="property: rotation; dir: normal; loop:true; dur: 1000;  easing: linear;  to:0 350 0;  -->
+        </a-collada-model>
+      </a-collada-model>
+    </a-scene>
+    <script>
+      var scene = document.querySelector("a-scene");
+      var pTrack = document.getElementById('ballR');
+      var pStart = document.getElementById('track1');
+      var pStrikeZone = document.getElementById('ballPosZone');
+      var pEnd = document.getElementById('ballPosEnd');
+      var ppath = pTrack.getAttribute('alongpath');
+
+      if (scene.hasLoaded) {
+        scene.show()
+        run();
+      } else {
+        scene.addEventListener("loaded", run);
+      }
+
+
+      function run() {
+        pTrack.addEventListener('movingended', function(e) {
+
+
+        // console.log(pStrikeZone);
+
+        // pStrikeZone.setAttribute('position',"13.5 3 -12.5" )
+        // pStrikeZone.flushToDOM();
+        // console.log(pStrikeZone);
+        // console.log(path);
+        ppath.components[‘alongpath’].reset();
+
+        }, false);
+      }
+    </script>
+
+  </body>
+
+</html>
+

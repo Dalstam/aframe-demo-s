@@ -1,0 +1,132 @@
+﻿<html class="a-html">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1">
+    <title>Virtual Galery DEMO • i360x • Galerie Mokum Amsterdam</title>
+    <meta aframe-injected="" name="mobile-web-app-capable" content="yes">
+    <meta aframe-injected="" name="theme-color" content="black">
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.2.2/dist/aframe-extras.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/aframe-event-set-component/master/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="chrome-extension://pkehgijcmpdhfbdbbnkijodmdjhbjlgp/skin/socialwidgets.css">
+</head>
+<body class="a-body" cz-shortcut-listen="true">
+
+    <a-scene physics="" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" vr-mode-ui="">
+        <a-assets>
+
+            <img id="paint1" src="paintings/2-30.jpg" />
+            <img id="paint2" src="paintings/6pm.jpg" />
+            <img id="paint3" src="paintings/before.jpg" />
+            <img id="paint4" src="paintings/inside.jpg" />
+            <img id="skySphere" src="texture/skyCloud.jpg" />
+            <!-- <img id="wfloor" src="texture/woodenFloor.jpg" /> -->
+            <!-- <img id="swall" src="texture/wall.jpg" /> -->
+        </a-assets>
+        <a-entity id="txt" position="8 0 6">
+            <a-entity bmfont-text="text: Welcome to the virtual galery." position="0 1 -2">
+            </a-entity>
+            <a-entity bmfont-text="text: Take a look around" position="0 0.9 -1.8">
+            </a-entity>
+            <a-entity bmfont-text="text: Focus the grey circle on the green areas" position="0 0.85 -1.6">
+            </a-entity>
+            <a-entity bmfont-text="text: to see the paintings" position="0 0.8 -1.4">
+            </a-entity>
+        </a-entity>
+        <!--<a-sky src="#skySphere"></a-sky>-->
+        <!--paintings-->
+        <!-- Player -->
+        <a-entity id="player" camera="" universal-controls="movementControls: hmd,keyboard,touch,checkpoint" checkpoint-controls="mode: animate" kinematic-body="height:2; mass:100" position="9 1.7 6" rotation="" scale="" visible="" velocity="" gamepad-controls="" keyboard-controls="" touch-controls="" hmd-controls="" mouse-controls="">
+            <a-entity cursor="minDistance: 40" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;" material="color: #CCC; shader: flat;" rotation="" scale="" visible="" raycaster="">
+            </a-entity>
+        </a-entity>
+        <!-- Ground -->
+        <a-grid static-body="" src="" geometry="" rotation="" material="" position="" scale="" visible=""></a-grid>
+
+        <!-- Obstacles -->
+        <!-- <a-box width="5" height="6" depth="0.5" position="8 0 -5" static-body="" material="src: #swall" geometry="" rotation="" scale="" visible=""> -->
+
+            <a-entity id="paint1" class="paint"
+                      static-body
+                      position="0 1.7 0.29 "
+                      scale="2 2"
+                      material="src:#paint1"
+                      geometry="primitive: plane; ">
+            </a-entity>
+        <!-- </a-box> -->
+
+        <!-- <a-box width="5" height="6" depth="0.5" position="18 0 12" static-body="" material="" geometry="" rotation="" scale="" visible=""> -->
+            <a-entity id="paint2"
+                      static-body
+                      geometry="primitive: plane;"
+                      position="0 1.7 -0.29 "
+                      scale="2 2 "
+                      material="src:#paint2; side:back;">
+            </a-entity>
+        <!-- </a-box> -->
+
+        <a-box width="5" height="6" depth="0.5" position="20 0 -5" static-body="" material="src: #swall" geometry="" rotation="0 90" scale="" visible="">
+          <a-light type="point" color="orange" position="0 5 0" rotation="2 0 3"></a-light>
+
+            <a-entity id="paint3"
+                      static-body
+                      geometry="primitive: plane;"
+                      position="0 1.7 -0.29 "
+                      scale="2 2 "
+                      material="src:#paint3; side:back">
+            </a-entity>
+        </a-box>
+
+        <a-box width="5" height="6" depth="0.5" position="-3 0 5" static-body="" material="" geometry="" rotation="0 90" scale="" visible="">
+            <a-entity id="paint4"
+                      static-body
+                      geometry="primitive: plane;"
+                      position="0 1.7 0.29"
+                      scale="2 2 0"
+                      material="src:#paint4; side:front">
+            </a-entity>
+        </a-box>
+
+        <a-cylinder checkpoint="" radius="1" height="0.1" position="8 0 -2" color="#39BB82" material="texture/woodenFloor.jpg" geometry="" rotation="" scale="" visible=""></a-cylinder>
+        <a-cylinder checkpoint="" radius="1" height="0.1" position="18 0 9" color="#39BB82" material="texture/woodenFloor.jpg" geometry="" rotation="" scale="" visible=""></a-cylinder>
+        <a-cylinder checkpoint="" radius="1" height="0.1" position="16 0 -5" color="#39BB82" material="texture/woodenFloor.jpg" geometry="" rotation="" scale="" visible=""></a-cylinder>
+        <a-cylinder checkpoint="" radius="1" height="0.1" position="0 0 5" color="#39BB82" material="texture/woodenFloor.jpg" geometry="" rotation="" scale="" visible=""></a-cylinder>
+        <a-cylinder checkpoint="" radius="1" height="0.1" position="6 0 6 " color="#39BB82" material="texture/woodenFloor.jpg" geometry="" rotation="" scale="" visible=""></a-cylinder>
+
+        <!-- Lighting -->
+        <a-light type="ambient" color="#bbb" light="" position="" rotation="" scale="" visible=""></a-light>
+        <a-light type="directional" color="#CECECE" light="" position="" rotation="" scale="" visible="" target="#paint1"></a-light>
+
+        <a-light color="#ccc" position="0 30 0" distance="100" intensity="0.4" type="point" light="" rotation="" scale="" visible=""></a-light>
+        <a-light color="#ccc" position="3 10 -10" distance="50" intensity="0.4" type="point" light="" rotation="" scale="" visible=""></a-light>
+        <canvas class="a-canvas" data-aframe-canvas="true" width="1212" height="900" style="width: 808px; height: 600px;"></canvas><div class="a-enter-vr" aframe-injected=""><button class="a-enter-vr-button" aframe-injected=""></button></div><div class="a-orientation-modal a-hidden" aframe-injected=""><button aframe-injected="">Exit VR</button></div>
+    </a-scene>
+
+    <!--<script>
+        var box = document.querySelector('.paint');
+        var camera = document.querySelector('#player');
+
+        box.addEventListener('touchstart', function () {
+            camera.setAttribute('position', {
+
+                z: -3
+            }
+            );
+        });
+
+        box.addEventListener('mouseleave', function () {
+            camera.setAttribute('position',
+
+                {
+
+                    z: -2
+                }
+
+            );
+        });
+    </script>-->
+</body>
+</html>

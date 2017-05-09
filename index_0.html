@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hello, World! - A-Frame</title>
+    <meta name="description" content="Hello, World! - A-Frame">
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.2.2/dist/aframe-extras.min.js"></script>
+    <script src="https://rawgit.com/bestiejs/platform.js/master/platform.js"></script>
+    <script src="https://rawgit.com/protyze/aframe-always-fullscreen-component/master/dist/aframe-always-fullscreen-component.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v1.2.0/dist/aframe-physics-system.min.js"></script>
+    <script src="https://rawgit.com/chenzlabs/stats-in-vr/master/dist/aframe-stats-in-vr-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^3.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-cubemap-component/master/dist/aframe-cubemap-component.min.js"></script>
+    <script src="https://rawgit.com/dbradleyfl/aframe-gridhelper/master/dist/aframe-gridhelper-component.min.js"></script>
+</head>
+<body>
+    <a-scene physics="debug: true" gridhelper>
+
+        <a-assets>
+            <img id="paint1" src="paintings/2-30.jpg" />
+            <img id="paint2" src="paintings/6pm.jpg" />
+            <img id="paint3" src="paintings/before.jpg" />
+            <img id="paint4" src="paintings/inside.jpg" />
+            <img id="skySphere" src="img/mokum.png" />
+            <img id="wfloor" src="texture/woodenFloor.jpg" />
+            <img id="swall" src="texture/wall.jpg" />
+        </a-assets>
+
+        <!--<a-sky src="#skySphere"></a-sky>-->
+        <!--<a-entity cubemap="folder: /texture/"></a-entity>-->
+        <a-entity id="floor"
+                  geometry="primitive: plane ; width: 10; height: 10 ; depth: 10;"
+                  scale="105 75 1 "
+                  material="src:#wfloor; side: back; repeat: 5 5"
+                  position="0 -69.5 0"
+                  rotation="90">
+            </a-e>
+        </a-entity>
+        <a-entity id="wall1"
+                  geometry="primitive: plane; width: 150; height: 150; depth: 150 mergeTo: #target"
+                  material="src:#swall"
+                  position="0 -2 -111">
+        </a-entity>
+        <a-entity id="paint1"
+                  position="0 2 -110"
+                  scale="100 100 "
+                  material="src:#paint1"
+                  geometry="primitive: plane; ">
+        </a-entity>
+        <a-entity id="paint2"
+                  geometry="primitive: plane;"
+                  position="-155 2.75 -133 "
+                  rotation="0 90 0"
+                  scale="40 40"
+                  material="src:#paint2">
+        </a-entity>
+        <a-entity id="wall2"
+                  geometry="primitive: plane; width: 150; height: 150; depth: 150 mergeTo: #target"
+                  material="src:#swall"
+                  position="-155 2.75 -133 "
+                  rotation="0 90 0">
+        </a-entity>
+        <a-entity id="paint3"
+                  geometry="primitive: plane;"
+                  position="-128 1.75 0 "
+                  scale="40 40 "
+                  rotation="0 90 0"
+                  material="src:#paint3">
+        </a-entity>
+        <a-entity id="paint4"
+                  geometry="primitive: plane;"
+                  position="-170 2 110"
+                  scale="40 40 0"
+                  rotation="0 180 0"
+                  material="src:#paint4">
+        </a-entity>
+        <a-entity id="camera"
+                  camera
+                  universal-controls="movementControls:  keyboard,touch;
+                  "
+                  custom-controls>
+            <a-cursor></a-cursor>
+        </a-entity>
+    </a-scene>
+</body>
+</html>

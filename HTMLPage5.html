@@ -1,0 +1,37 @@
+﻿<html>
+<head>
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/aframe-animation-component/master/dist/aframe-animation-component.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+            <img id="boxTexture" src="https://i.imgur.com/mYmmbrp.jpg">
+            <img id="skyTexture" src="texture/sky.jpg">
+            <img id="groundTexture" src="texture/ice.jpg">
+            <!--<audio src="" autoplay preload></audio>-->
+        </a-assets>
+
+        <a-plane src="#groundTexture" rotation="-90 0 0" scale="30 30 30" position="0 -50"></a-plane>
+
+        <a-entity id="box"
+                  geometry="primitive: box"
+                  material="src: #boxTexture"
+                  rotation="0 45 45" scale="2 2 2"
+                  position="0 2 -5">
+            <a-animation attribute="position" to="0 2.2 -5" direction="alternate" dur="2000"
+                         repeat="indefinite"></a-animation>
+            <a-animation attribute="scale" begin="mouseenter" dur="300" to="2.3 2.3 2.3"></a-animation>
+            <a-animation attribute="scale" begin="mouseleave" dur="300" to="2 2 2"></a-animation>
+            <a-animation attribute="rotation" begin="click" dur="2000" to="360 405 45"></a-animation>
+        </a-entity>
+
+        <a-sky src="#skyTexture"></a-sky>
+        <a-light type="ambient" color="#445451"></a-light>
+
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+    </a-scene>
+</body>
+</html>

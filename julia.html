@@ -1,0 +1,75 @@
+﻿<html class="a-html">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1">
+    <title>Virtual Galery DEMO • i360x • Neil</title>
+    <meta aframe-injected="" name="mobile-web-app-capable" content="yes">
+    <meta aframe-injected="" name="theme-color" content="black">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.2.2/dist/aframe-extras.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/aframe-event-set-component/master/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-firebase-component@^4.0.0/dist/aframe-firebase-component.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="chrome-extension://pkehgijcmpdhfbdbbnkijodmdjhbjlgp/skin/socialwidgets.css">
+</head>
+<body class="a-body" cz-shortcut-listen="true">
+
+    <a-scene firebase="apiKey: AIzaSyCGtBRo5egzKzZzrV2650L-PKc_F33ix9Y;
+                     authDomain: my-projecttest-1476797920128.firebaseapp.com;
+                     databaseURL: https://my-projecttest-1476797920128.firebaseio.com;
+                     storageBucket: my-projecttest-1476797920128.appspot.com"
+             physics="" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" vr-mode-ui="">
+        <a-assets>
+
+            <a-mixin id="avatar-head"
+                     geometry="primitive: box; depth: 0.3; height: 0.3; width: 0.3"
+                     material="color: #222"></a-mixin>
+
+            <script id="wallWindowWide" type="text/html">
+                <a-box id="bottom" width="30" height="1.5" depth="1" position="0 1 " static-body=""> </a-box>
+                <a-box id="top" width="30" height="4" depth="1" position="0 6.75 " static-body=""> </a-box>
+                <a-box id="left" width="12" height="3" depth="1" position="9 3.25 " static-body=""> </a-box>
+                <a-box id="right" width="12" height="3" depth="1" position="-9 3.25 " static-body=""> </a-box>
+            </script>
+            <script id="roofFlat" type="text/html">
+                <a-plane id="bottom" width="1" height="1" depth="1" material="color:#DEDEDE"> </a-plane>
+            </script>
+
+            <img id="skySphere" src="texture/skyCloud.jpg" />
+        </a-assets>
+
+        <a-sky src="#skySphere"></a-sky>
+        <!--paintings-->
+        <!-- Player -->
+
+        <a-entity camera
+                  universal-controls="movementControls: checkpoint,keyboard, touch"
+                  checkpoint-controls="mode: animate"
+                  id="avatar" mixin="avatar-head"
+                  firebase-broadcast="components: mixin, position, rotation"
+                  position="0 2 0"
+                  kinematic-body>
+            <a-entity cursor="maxDistance: 30"
+                      position="0 0 -1"
+                      geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
+                      material="color: #CCC; shader: flat;">
+            </a-entity>
+        </a-entity>
+        <!-- Ground -->
+        <a-grid static-body="" src="" geometry="" rotation="" material="color:red" position="" scale="" visible=""></a-grid>
+        <!-- walls -->
+        <a-box static-body="">
+            <a-entity template="src: #wallWindowWide" position="0 0 -15" scale="1 1 1" static-body=""></a-entity>
+            <a-entity template="src: #wallWindowWide" position="0 0 15" scale="1 1 1" static-body=""></a-entity>
+            <a-entity template="src: #wallWindowWide" position="15 0 0 " scale="1 1 1" rotation="0 90" static-body=""></a-entity>
+            <a-entity template="src: #wallWindowWide" position="-15 0 0 " scale="1 1 1" rotation="0 90" static-body=""></a-entity>
+        </a-box>
+
+        <!--roof-->
+        <a-entity template="src: #roofFlat" position="0 11 0" scale="10 0 10"></a-entity>
+    </a-scene>
+</body>
+</html>

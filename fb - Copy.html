@@ -1,0 +1,61 @@
+﻿<html class="a-html">
+<head>
+    <title>My A-Frame Scene</title>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-firebase-component@^4.0.0/dist/aframe-firebase-component.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.3.0/dist/aframe-extras.min.js"></script>
+    <script src="js/random-position-at.js"></script>
+    <script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+    <a-scene firebase="apiKey: AIzaSyCGtBRo5egzKzZzrV2650L-PKc_F33ix9Y;
+                     authDomain: my-projecttest-1476797920128.firebaseapp.com;
+                     databaseURL: https://my-projecttest-1476797920128.firebaseio.com;
+                     storageBucket: my-projecttest-1476797920128.appspot.com">
+
+        <a-assets>
+            <!-- Using mixins to decrease amount of data send over the wire. -->
+            <a-mixin id="avatar-head"
+                     geometry="primitive: box; depth: 0.3; height: 0.3; width: 0.3"
+                     material="color: #222"></a-mixin>
+            <video id="video_1" src="https://ucarecdn.com/bcece0a8-86ce-460e-856b-40dac4875f15/" autoplay loop crossorigin></video>
+
+            <video id="video_2" src="video/SphereVideo.webm" autoplay loop crossorigin></video>
+        </a-assets>
+
+        <a-entity id="avatar" mixin="avatar-head"
+                  camera=""
+                  universal-controls="movementControls:touch, keyboard; "
+                  firebase-broadcast="components: mixin, position, rotation"
+                  position="0 1.8 5">
+            <a-entity cursor="" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;" material="color: #CCC; shader: flat;" rotation="" scale="" visible="" raycaster="">
+            </a-entity>
+        </a-entity>
+        <a-videosphere id="vdPlayer" src="" rotation="0 180 0"></a-videosphere>
+
+        <!--<a-sky id="sky" color="#426fa1"></a-sky>-->
+        <a-plane id="vid1" static-body width="20" height="3" position="0 1.5 10" material="color:#0000ff;side: double;">
+        </a-plane>
+        <a-plane id="vid2" static-body width="20" height="3" position="0 1.5 -10" material="color:#ffffff;side: double;"></a-plane>
+        <a-plane static-body width="20" height="3" position="10 1.5 " rotation="0 90" material="color:#ff0000;side: double;"></a-plane>
+        <a-plane static-body width="20" height="3" position="-10 1.5 " rotation="0 90" material="color:#00ff00;side: double;"></a-plane>
+    </a-scene>
+
+    <script>
+        $(document).ready(function () {
+            $("#vid1").click(function () {
+                console.log("geklikt");
+                $("#vdPlayer").attr("src", "#video_1");
+            });
+
+            $("#vid2").click(function () {
+                console.log("geklikt");
+                $("a-videosphere").attr("src", "#video_2");
+            });
+        });
+    </script>
+</body>
+</html>

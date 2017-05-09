@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>i360x - demo page</title>
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+</head>
+<body>
+    <a-assets>
+        <img id="sky" src="texture/SKY.jpg">
+    </a-assets>
+    <a-scene>
+
+        <!--<a-entity id="box" geometry="primitive: box; width: 1; height: 1; depth: 1" position="-3 -2 -1"></a-entity>
+        <a-cone color="tomato" radius-bottom="2" radius-top="0.5" position="-10 -2 -1"></a-cone>-->
+        <!--<a-plane src="#sky" height="10" width="10" rotation="-90 180 0"></a-plane>-->
+        <a-dodecahedron color="red" radius="2" position="180"></a-dodecahedron>
+        <a-dodecahedron color="red" radius="5" position="-180"></a-dodecahedron>
+        <a-dodecahedron color="blue" radius="5" position="0 180"></a-dodecahedron>
+        <a-dodecahedron color="blue" radius="5" position="0 -180"></a-dodecahedron>
+        <a-dodecahedron color="green" radius="5" position="0 0 180"></a-dodecahedron>
+        <a-dodecahedron color="green" radius="5" position="0 0 -180"></a-dodecahedron>
+        <a-sky src="#sky"></a-sky>
+
+        <a-entity camera>
+            <a-cursor color="#FF0000">
+        </a-entity>
+    </a-scene>
+</body>
+</html>

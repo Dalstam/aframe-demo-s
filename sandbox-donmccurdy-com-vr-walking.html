@@ -1,0 +1,66 @@
+﻿<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1">
+    <title>Examples • Walking</title>
+
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.2.2/dist/aframe-extras.min.js"></script>
+
+    <script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script>
+</head>
+<body>
+    <a-scene physics="">
+        <a-assets>
+            <script id="wallWindowWide" type="text/html">
+                <a-box id="bottom" width="30" height="1.5" depth="1" position="0 1 " static-body=""> </a-box>
+                <a-box id="top" width="30" height="4" depth="1" position="0 6.75 " static-body=""> </a-box>
+                <a-box id="left" width="12" height="3" depth="1" position="9 3.25 " static-body=""> </a-box>
+                <a-box id="right" width="12" height="3" depth="1" position="-9 3.25 " static-body=""> </a-box>
+            </script>
+            <script id="roofFlat" type="text/html">
+                <a-box id="bottom" width="1" height="1" depth="1" static-body="" material="color:#DEDEDE"> </a-box>
+            </script>
+
+            <img id="skySphere" src="texture/skyCloud.jpg" />
+        </a-assets>
+
+        <!--sky-->
+        <a-sky src="#skySphere"></a-sky>
+        <!--sky-->
+        <!-- Player -->
+        <a-entity camera
+                  universal-controls="movementControls: checkpoint,keyboard, touch"
+                  checkpoint-controls="mode: animate"
+                  position="0 1.764 0">
+            <a-entity cursor="maxDistance: 30"
+                      position="0 0 -1"
+                      geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;"
+                      material="color: #CCC; shader: flat;">
+            </a-entity>
+        </a-entity>
+        <!-- Player -->
+        <!-- Ground -->
+        <a-grid static-body="" src="" geometry="" rotation="" material="color:red" position="" scale="" visible=""></a-grid>
+        <!-- walls -->
+        <a-entity template="src: #wallWindowWide" position="0 0 -15" scale="1 1 1" static-body=""></a-entity>
+        <a-entity template="src: #wallWindowWide" position="0 0 15" scale="1 1 1" static-body=""></a-entity>
+        <a-entity template="src: #wallWindowWide" position="15 0 0 " scale="1 1 1" rotation="0 90" static-body=""></a-entity>
+        <a-entity template="src: #wallWindowWide" position="-15 0 0 " scale="1 1 1" rotation="0 90" static-body=""></a-entity>
+        <!--roof-->
+        <a-entity template="src: #roofFlat" position="0 7 0" scale="20 0 20"></a-entity>
+
+        <!-- Lighting -->
+        <a-light type="ambient" color="#bbb" light="" position="" rotation="" scale="" visible=""></a-light>
+
+        <!--<canvas class="a-canvas" data-aframe-canvas="true" width="1212" height="900" style="width: 808px; height: 600px;"></canvas>
+        <div class="a-enter-vr" aframe-injected="">
+            <button class="a-enter-vr-button" aframe-injected=""></button>
+        </div>
+        <div class="a-orientation-modal a-hidden" aframe-injected="">
+            <button aframe-injected="">Exit VR</button>
+        </div>-->
+    </a-scene>
+</body>
+</html>

@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html class="a-html">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="description" content="Basic <a-sun-sky>">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1">
+    <title>Examples • Pencil drawings by Neil Diederiks</title>
+
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.3.0/dist/aframe-extras.min.js"></script>
+</head>
+
+<body class="a-body" physics="" cz-shortcut-listen="true">
+
+    <a-scene physics="" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" vr-mode-ui="">
+        <a-assets>
+            <!--<img id="paint1" src="paintings/SIS.png" />
+            <img id="paint2" src="paintings/friend1.jpeg" />
+            <img id="paint3" src="paintings/EYE.png" />
+            <img id="paint4" src="paintings/FACE.png" />
+            <img id="paint5" src="paintings/houseWood.jpg" />
+            <img id="paint6" src="paintings/SELF.jpeg" />
+            <img id="paint7" src="paintings/interiour.jpeg" />
+            <img id="paint8" src="paintings/landscape.jpeg" />
+            <img id="skySphere" src="texture/skyCloud.jpg" />-->
+            <img id="wfloor" src="texture/woodenFloor.jpg" />
+            <img id="paint1" src="paintings/2-30.jpg" />
+            <img id="paint2" src="paintings/6pm.jpg" />
+            <img id="paint3" src="paintings/before.jpg" />
+            <img id="paint4" src="paintings/FACE.png" />
+            <img id="paint5" src="paintings/houseWood.jpg" />
+            <img id="paint6" src="paintings/SELF.jpeg" />
+            <img id="paint7" src="paintings/interiour.jpeg" />
+            <img id="paint8" src="paintings/landscape.jpeg" />
+            <img id="skySphere" src="texture/skyCloud.jpg" />
+            <img id="swall" src="texture/wall.jpg" />
+               <a-asset-item id="house" src="models/g11-2.dae"></a-asset-item>
+        </a-assets>
+        <!--<a-entity id="txt" position="8 0 6">
+            <a-entity bmfont-text="text: Welcome to the virtual galery." position="0 1 -2">
+            </a-entity>
+            <a-entity bmfont-text="text: Take a look around" position="0 0.9 -1.8">
+            </a-entity>
+            <a-entity bmfont-text="text: Focus the grey circle on the green areas" position="0 0.85 -1.6">
+            </a-entity>
+            <a-entity bmfont-text="text: to see the paintings" position="0 0.8 -1.4">
+            </a-entity>
+        </a-entity>-->
+        <!--paintings-->
+        <!-- Player -->
+        <a-entity id="player" camera="" universal-controls="movementControls:touch, keyboard, checkpoint;  rotationControls: hmd, mouse; " checkpoint-controls="mode: animate" kinematic-body="height:2; " position="0 1.6 0" rotation="" scale="" visible="" velocity="" gamepad-controls="" keyboard-controls="" touch-controls="" hmd-controls="" mouse-controls="">
+            <a-entity cursor="" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03;" material="color: #CCC; shader: flat;" rotation="" scale="" visible="" raycaster="">
+            </a-entity>
+        </a-entity>
+        <a-sky color="#426fa1"></a-sky>
+        <!-- Ground -->
+        <a-grid id="floor" static-body="" width="20" height="20" src="" geometry="" rotation="" material="src:#wfloor" position="" scale="" visible=""></a-grid>
+        <!-- Obstacles -->
+        <!-- <a-plane static-body width="20" height="3" position="0 1.5 10" material="color:#fff;side: double;"></a-plane>
+        <a-plane static-body width="20" height="3" position="0 1.5 -10" material="color:#fff;side: double;"></a-plane>
+        <a-plane static-body width="20" height="3" position="10 1.5 " rotation="0 90" material="color:#fff;side: double;"></a-plane>
+        <a-plane static-body width="20" height="3" position="-10 1.5 " rotation="0 90" material="color:#fff;side: double;"></a-plane>
+        <a-entity template="src: #wallWindowWide" position="-15 0 0 " scale="1 1 1" rotation="0 90" static-body=""></a-entity> -->
+
+
+        <a-cylinder checkpoint="" radius="0.5" height="0.1" position="6 0 -6" color="#293740"></a-cylinder>
+
+        <!-- <a-entity id="paint1" class="paint"
+                  position="8 1.6 -9.99"
+                  width="1.5"
+                  height="2"
+                  geometry="primitive: plane"
+                  material="src:#paint1;">
+        </a-entity>
+
+        <a-entity id="paint2"
+                  geometry="primitive: plane;"
+                  position="9.99 1.6 -8"
+                  rotation="0 90"
+                  width="1.5"
+                  height="2"
+                  material="src:#paint2; side:back;">
+        </a-entity>
+
+        <a-entity id="paint7"
+                  geometry="primitive: plane;"
+                  position="4 1.6 -9.99"
+                  rotation=""
+                  width="1.5"
+                  height="2"
+                  material="src:#paint7; side:front;">
+        </a-entity>
+
+        <a-entity id="paint8"
+                  geometry="primitive: plane;"
+                  position="-4 1.7 -9.99"
+                  rotation=""
+                  width="1.5"
+                  height="2"
+                  material="src:#paint8; side:front;">
+        </a-entity>
+
+        <a-box id="wall3" width="3" height="2.5" depth="0.5" position="9.5 1.5 2.5" static-body="" material="color:#8CBEDB" geometry="" rotation="0 90" scale="" visible="">
+            <a-entity id="paint3"
+                      geometry="primitive: plane;"
+                      position="0 0.25 -0.29 "
+                      scale="2 1.5 "
+                      rotation="0 180"
+                      material="src:#paint3; side:double">
+            </a-entity>
+        </a-box>
+        <a-cylinder checkpoint="" radius="0.5" height="0.1" position="6.5 0 2.5" color="#293740" geometry="" rotation="" scale="" visible=""></a-cylinder>
+
+        <a-box id="wall4" width="5" height="3" depth="0.5" position="-9.5 1.5 2" static-body="" material="color:#8CBEDB" geometry="" rotation="0 90" scale="" visible="">
+            <a-entity id="paint4"
+                      static-body
+                      geometry="primitive: plane;"
+                      position="0 0.25 0.29"
+                      scale="1.5 2 "
+                      material="src:#paint4; side:front">
+            </a-entity>
+        </a-box>
+        <a-cylinder checkpoint="" radius="0.5" height="0.1" position="-6.5 0 2" color="#293740" geometry="" rotation="" scale="" visible=""></a-cylinder>
+
+        <a-box id="wall5" width="5" height="3" depth="0.2" position="0 1.5 9.8" static-body="" material="color:#8CBEDB" geometry="" rotation="0 " scale="" visible="">
+            <a-entity id="paint5"
+                      static-body
+                      geometry="primitive: plane;"
+                      position="0 0.25 -0.47"
+                      scale="1.5 2"
+                      material="src:#paint5; side:back">
+            </a-entity>
+        </a-box>
+        <a-cylinder checkpoint="" radius="0.5" height="0.1" position="0 0 6 " color="#293740" geometry="" rotation="" scale="" visible=""></a-cylinder>
+
+        <a-box id="wall6" static-body="" material="color:#8CBEDB;" position="-9 1.5 -9" rotation="0 45 0" geometry="depth:0.5;height:3;width:2">
+            <a-entity id="paint6" position="0 0.3 0.3" geometry="primitive: plane;" material="src:#paint4; side:front" rotation="" visible="">
+            </a-entity>
+        </a-box>
+
+        <a-cylinder checkpoint="" radius="0.5" height="0.1" position="-5.3 0 -6.4 " color="#293740" geometry="" rotation="" scale="" visible=""></a-cylinder>
+
+        <!--Start pos.-->
+        <a-cylinder checkpoint="" radius="0.5" height="0.1" position="0 0 0 " color="#293740" geometry="" rotation="" scale="" visible=""></a-cylinder>
+
+        <!-- Lighting -->
+        <a-light type="hemisphere" color="#bbb" light="" position="" rotation="" scale="" visible=""></a-light> -->
+
+        <div class="a-enter-vr" aframe-injected="">
+            <button class="a-enter-vr-button" aframe-injected=""></button>
+        </div>
+        <div class="a-orientation-modal a-hidden" aframe-injected="">
+            <button aframe-injected="">Exit VR</button>
+        </div>
+    </a-scene>
+</body>
+</html>

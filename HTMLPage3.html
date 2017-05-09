@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
+    <script> src = "js/"</script>
+    <script src="https://code.jquery.com/jquery-3.1.1.js"
+            integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+            crossorigin="anonymous"></script>
+    <title></title>
+    <style>
+        #rond {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+
+            <img id="texture" src="texture/texture.jpg">
+        </a-assets>
+        <!--<a-box position="0 2 -2"
+               scale="1 1 1"
+               rotation="45 90 45"
+               width="1"
+               height="1"
+               depth="1"
+               src="#texture"
+               id="een">
+
+            <a-animation attribute="rotation"
+                         dur="10000"
+                         fill="forwards"
+                         to="0 360 0"
+                         repeat="indefinite"></a-animation>
+        </a-box>-->
+
+        <a-box position="-1 2 -2"
+               scale="1 1 1"
+               rotation="45 90 45"
+               width="1"
+               height="1"
+               depth="1"
+               src="#texture"
+               begin="click"
+               id="twee">
+            <a-animation attribute="rotation"
+                         direction="reverse"
+                         dur="10000"
+                         fill="none"
+                         to="0 360 0"
+                         repeat="indefinite">
+            </a-animation>
+            <a-event name="click" scale="0 0 0"></a-event>
+        </a-box>
+        <a-camera position="0 7 5">
+            <a-cursor color="#FF0000">
+        </a-camera>
+        <a-light type="spot"
+                 color="#FF0000"
+                 position="-1 3 0"
+                 lookat="#twee"></a-light>
+        <a-light typeof="spot"
+                 color="green"
+                 position="1 -3 0"
+                 lookat="#twee"></a-light>
+        <a-sky src="texture/sky.jpg"></a-sky>
+        <a-entity position="0 1 0" geometry="primitive: box" draw="width: 256; height: 256" square="text: Hello">
+        </a-entity>
+    </a-scene>
+    <script>
+        var AFRAME = require("aframe-core");
+        var draw = require("aframe-draw-component").component;
+        AFRAME.registerComponent("draw", draw);
+    </script>
+</body>
+</html>

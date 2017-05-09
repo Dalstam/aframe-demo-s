@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/0.5.0/aframe.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^3.2.0/dist/aframe-animation-component.min.js"></script>
+    <script src="js/build.js"></script>
+    <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.3.0/dist/aframe-extras.min.js"></script> -->
+    <script src="https://cdn.rawgit.com/tizzle/aframe-orbit-controls-component/master/dist/aframe-orbit-controls-component.min.js"></script>
+
+</head>
+
+<body>
+    <a-scene>
+
+
+        <!-- <a-camera position="12.3 1.7 -13" rotation="0 -50 0"></a-camera> -->
+        <a-camera id="camera" position="11 0.5 -11" active="true"
+        orbit-controls="
+                            autoRotate: false;
+                            target: #target;
+                            enableDamping: true;
+                            dampingFactor: 0.125;
+                            rotateSpeed:0.25;
+                            distance:1;">
+        </a-camera>
+  <a-entity id="target" geometry="primitive: box" scale="1 1 1" position="10 10 10" material="color: #cc0000"></a-entity>
+    </a-scene>
+
+</body>
+
+</html>

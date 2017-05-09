@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/0.5.0/aframe.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^3.2.0/dist/aframe-animation-component.min.js"></script>
+    <script src="js/build.js"></script>
+    <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.3.0/dist/aframe-extras.min.js"></script> -->
+</head>
+
+<body>
+    <a-scene>
+
+        <a-assets>
+            <a-asset-item id="ball" src="models/baseball.dae"></a-asset-item>
+            <a-asset-item id="field" src="models/Softball+Field+Single.dae"></a-asset-item>
+        </a-assets>
+
+        <a-entity light="type: directional; color: #EEE; intensity: 0.5" position="-1 1 0"></a-entity>
+        <!-- <a-camera position="12.3 1.7 -13" rotation="0 -50 0"></a-camera> -->
+            <a-camera position="11 1 -11" rotation="0 -50 0"></a-camera>
+            <a-sky src="" color="#000"></a-sky>
+        <a-curve id="track1">
+            <a-curve-point position="21 1.8 -21"></a-curve-point>
+            <!-- <a-curve-point position="15 1.5 -15"></a-curve-point>
+            <a-curve-point position="13 1.4 -13"></a-curve-point>
+            <a-curve-point position="10 1.2 -10"></a-curve-point> -->
+            <a-curve-point position="9 1 -9"></a-curve-point>
+        </a-curve>
+
+        <a-entity geometry="primitive: box; width: 0.38" position="12.5 1.5 -12.5" rotation="0 133 0"></a-entity>
+
+
+
+
+
+        <a-draw-curve curveref="#track1"></a-draw-curve>
+
+        <a-collada-model id="field" src="#field" position="0 0.5 0"></a-collada-model>
+
+        <a-collada-model id="ball" src="#ball" rotation="90" scale="2 2 2"
+        animation="property: rotation; dir: normal; dur: 1000; loop:true; easing: linear;  to:0 350 0; "
+        alongpath="curve: #track1; loop:true; dur:10000; rotate:false;">
+        </a-collada-model>
+
+
+
+
+    </a-scene>
+
+</body>
+
+</html>
